@@ -3,10 +3,11 @@
 ## Requirements:
 
 ```
-Spring Boot: 3.4.0-SNAPSHOT
+Git: 2.47.1
+Spring Boot: 3.4.0
 Maven: 3.9+
 Java: 17
-Docker Engine: 25.0.2
+Docker Desktop(Optional): Tested on 4.36.0
 ```
 
 ### Clone this repository:
