@@ -1,10 +1,12 @@
+[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-3-security-magic-link/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-3-security-magic-link/actions/workflows/maven-build.yml)
+
 # Getting Started
 
 ## Requirements:
 
 ```
 Git: 2.47.1
-Spring Boot: 3.4.0
+Spring Boot: 3.4.1
 Maven: 3.9+
 Java: 17
 Docker Desktop(Optional): Tested on 4.36.0
