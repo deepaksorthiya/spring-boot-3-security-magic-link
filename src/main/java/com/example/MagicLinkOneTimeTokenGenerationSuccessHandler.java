@@ -16,6 +16,7 @@
 
 package com.example;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,27 +33,38 @@ import java.io.IOException;
 @Component
 public class MagicLinkOneTimeTokenGenerationSuccessHandler implements OneTimeTokenGenerationSuccessHandler {
 
-	private final MailSender mailSender;
+    private final MailSender mailSender;
 
-	private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+    private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-	public MagicLinkOneTimeTokenGenerationSuccessHandler(MailSender mailSender) {
-		this.mailSender = mailSender;
-	}
+    public MagicLinkOneTimeTokenGenerationSuccessHandler(MailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
-	@Override
-	public void handle(HttpServletRequest request, HttpServletResponse response, OneTimeToken oneTimeToken)
-			throws IOException, ServletException {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(UrlUtils.buildFullRequestUrl(request))
-			.replacePath(request.getContextPath())
-			.replaceQuery(null)
-			.fragment(null)
-			.path("/login/ott")
-			.queryParam("token", oneTimeToken.getTokenValue());
-		String magicLink = builder.toUriString();
-		this.mailSender.send("johndoe@example.com", "Your Spring Security One Time Token",
-				"Use the following link to sign in into the application: " + magicLink);
-		this.redirectStrategy.sendRedirect(request, response, "/ott/sent");
-	}
+    @Override
+    public void handle(HttpServletRequest request, HttpServletResponse response, OneTimeToken oneTimeToken)
+            throws IOException, ServletException {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(UrlUtils.buildFullRequestUrl(request))
+                .replacePath(request.getContextPath())
+                .replaceQuery(null)
+                .fragment(null)
+                .path("/login/ott")
+                .queryParam("token", oneTimeToken.getTokenValue());
+        String magicLink = builder.toUriString();
+        System.out.println("Magic Link: " + magicLink);
+        try {
+            this.mailSender.send(
+                    "johndoe@example.com",
+                    "Your Spring Security One Time Token",
+                    """
+                            Use the following link to sign in into the application: <a href=%s>Click To Login!</a><br>
+                            Full Link is: %s
+                            """
+                            .formatted(magicLink, magicLink));
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+        this.redirectStrategy.sendRedirect(request, response, "/ott/sent");
+    }
 
 }

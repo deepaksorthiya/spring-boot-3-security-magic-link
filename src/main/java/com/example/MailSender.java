@@ -16,26 +16,30 @@
 
 package com.example;
 
-import org.springframework.mail.SimpleMailMessage;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service("myMailSender")
 public class MailSender {
 
-	private final JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
 
-	public MailSender(JavaMailSender mailSender) {
-		this.mailSender = mailSender;
-	}
+    public MailSender(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
-	public void send(String to, String subject, String text) {
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom("noreply@example.com");
-		message.setTo(to);
-		message.setSubject(subject);
-		message.setText(text);
-		this.mailSender.send(message);
-	}
+    public void send(String to, String subject, String text) throws MessagingException {
+        MimeMessage msg = mailSender.createMimeMessage();
+        // true = multipart message
+        MimeMessageHelper message = new MimeMessageHelper(msg, true);
+        message.setFrom("noreply@example.com");
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text, true);
+        this.mailSender.send(msg);
+    }
 
 }
