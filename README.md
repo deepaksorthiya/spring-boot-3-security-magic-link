@@ -1,15 +1,21 @@
 [![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-3-security-magic-link/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-3-security-magic-link/actions/workflows/maven-build.yml)
 
+## 🚀 Overview
+
+**Spring Boot Security** magic link or one time link login example.
+
+---
+
 # Getting Started
 
 ## Requirements:
 
 ```
-Git: 2.49.0
-Spring Boot: 3.4.5
+Git: 2.51.0
+Spring Boot: 3.5.6
 Maven: 3.9+
-Java: 21
-Docker Desktop(Optional): Tested on 4.41.0
+Java: 24
+Docker Desktop(Optional): Tested on 4.47.0
 ```
 
 ### Clone this repository:
