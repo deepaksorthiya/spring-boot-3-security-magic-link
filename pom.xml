@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.6</version>
+        <version>3.5.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>spring-boot-3-security-magic-link</artifactId>
+    <artifactId>spring-boot-security-onetime-token-magic-link</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-3-security-magic-link</name>
-    <description>Spring Boot 3 Security Magic Link Login</description>
+    <name>spring-boot-security-onetime-token-magic-link</name>
+    <description>Spring Boot 3 Security One Time Token Magic Link Login</description>
     <url/>
     <licenses>
         <license/>
@@ -27,7 +27,7 @@
         <url/>
     </scm>
     <properties>
-        <java.version>24</java.version>
+        <java.version>25</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -81,9 +81,6 @@
                         <createdDate>${maven.build.timestamp}</createdDate>
                         <builder>bellsoft/buildpacks.builder:musl</builder>
                     </image>
-                    <layers>
-                        <enabled>true</enabled>
-                    </layers>
                 </configuration>
             </plugin>
         </plugins>

@@ -38,7 +38,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            deepaksorthiya/spring-boot-3-security-magic-link
+            deepaksorthiya/spring-boot-security-onetime-token-magic-link
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push image

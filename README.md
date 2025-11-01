@@ -1,4 +1,4 @@
-[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-3-security-magic-link/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-3-security-magic-link/actions/workflows/maven-build.yml)
+[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-security-onetime-token-magic-link/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-security-onetime-token-magic-link/actions/workflows/maven-build.yml)
 
 ## 🚀 Overview
 
@@ -12,20 +12,20 @@
 
 ```
 Git: 2.51.0
-Spring Boot: 3.5.6
+Spring Boot: 3.5.7
 Maven: 3.9+
-Java: 24
-Docker Desktop(Optional): Tested on 4.47.0
+Java: 25
+Docker Desktop(Optional): Tested on 4.48.0
 ```
 
 ### Clone this repository:
 
 ```bash
-git clone https://github.com/deepaksorthiya/spring-boot-3-security-magic-link.git
+git clone https://github.com/deepaksorthiya/spring-boot-security-onetime-token-magic-link.git
 ```
 
 ```bash
-cd spring-boot-3-security-magic-link
+cd spring-boot-security-onetime-token-magic-link
 ```
 
 ### Start Docker:
